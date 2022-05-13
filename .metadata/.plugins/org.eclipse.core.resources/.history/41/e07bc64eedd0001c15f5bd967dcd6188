@@ -1,0 +1,19 @@
+package com.gregory.jogowarapi.domain;
+
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Pais implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
+	private Integer id;
+	private String nome;
+	private List<Pais> vizinhos;
+	private Integer soldadosDef;
+	
+	
+
+}

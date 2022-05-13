@@ -1,0 +1,13 @@
+package com.gregory.jogowarapi;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class JogoWarApiApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}

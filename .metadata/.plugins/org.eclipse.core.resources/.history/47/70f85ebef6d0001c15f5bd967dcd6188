@@ -1,0 +1,5 @@
+package com.gregory.jogowarapi.config;
+
+public class DevConfig {
+
+}

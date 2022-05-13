@@ -1,0 +1,10 @@
+package com.gregory.jogowarapi.service;
+
+public class DBService {
+
+	public void instanciarDados() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

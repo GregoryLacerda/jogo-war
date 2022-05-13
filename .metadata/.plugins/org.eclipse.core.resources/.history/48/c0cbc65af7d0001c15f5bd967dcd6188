@@ -1,0 +1,5 @@
+package com.gregory.jogowarapi.repositories;
+
+public interface JogadorRepository implements {
+
+}

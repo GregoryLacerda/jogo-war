@@ -1,0 +1,44 @@
+package com.gregory.jogowarapi.service;
+
+import java.util.Arrays;
+import java.util.Set;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.gregory.jogowarapi.domain.Jogador;
+import com.gregory.jogowarapi.domain.Pais;
+import com.gregory.jogowarapi.repositories.JogadorRepository;
+import com.gregory.jogowarapi.repositories.PaisRepository;
+
+@Service
+public class DBService {
+
+	@Autowired
+	private JogadorRepository jogadorRepository;
+	
+	@Autowired
+	private PaisRepository paisRepository;
+	
+	public void instanciarDados() {
+		
+		Pais brasil = new Pais(null, "Brasil", null, 0, null);
+		
+		Pais chile = new Pais(null, "Chile", null, 0, null);
+		Pais argentina = new Pais(null, "Argentina", null, 0, null);
+		Pais uruguai = new Pais(null, "Uruguai", null, 0, null);
+		
+		brasil.addVizinhos(Arrays.asList(chile, argentina, uruguai));
+		argentina.addVizinhos(Arrays.asList(brasil, chile, uruguai));
+		chile.addVizinhos(Arrays.asList(brasil, argentina, uruguai));
+		uruguai.addVizinhos(Arrays.asList(brasil, chile, argentina));
+		
+		paisRepository.saveAll(Arrays.asList(brasil, chile, argentina, uruguai));
+		
+		Jogador jogador1 = new Jogador(null, 10, "Jogador 1");
+		
+		jogador1.addPaises(Arrays.asList(brasil));
+		
+	}
+
+}

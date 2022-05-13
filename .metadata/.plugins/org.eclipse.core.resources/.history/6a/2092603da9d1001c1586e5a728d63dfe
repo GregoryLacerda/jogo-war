@@ -1,0 +1,5 @@
+package com.gregory.jogowarapi.services;
+
+public class JogadorService {
+
+}

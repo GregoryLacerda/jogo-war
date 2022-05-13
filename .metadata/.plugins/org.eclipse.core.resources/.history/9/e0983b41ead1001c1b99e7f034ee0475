@@ -1,0 +1,96 @@
+package com.gregory.jogowarapi.services;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.gregory.jogowarapi.domain.Jogador;
+import com.gregory.jogowarapi.domain.Partida;
+import com.gregory.jogowarapi.domain.Rodada;
+import com.gregory.jogowarapi.domain.dtos.PartidaDTO;
+import com.gregory.jogowarapi.repositories.PartidaRepository;
+import com.gregory.jogowarapi.repositories.RodadaRepository;
+import com.gregory.jogowarapi.services.exceptions.ObjectNotFoundException;
+
+@Service
+public class PartidaService {
+	
+	@Autowired
+	private PartidaRepository repository;
+	@Autowired
+	private RodadaRepository rodadaRepository;
+	@Autowired
+	private JogadorService jogadorService;
+	
+	public List<Partida> findAll() {
+		
+		List<Partida> list = repository.findAll();
+		
+		return list;
+	}
+	
+
+	public Partida findById(Integer id) {
+		
+		Optional<Partida> obj = repository.findById(id);
+		 
+		
+		return obj.orElseThrow(() -> new ObjectNotFoundException("Partida não encontrado"));
+	}
+
+
+	public Partida update(Integer id, PartidaDTO objDto) {
+		
+		objDto.setCodigo(id);
+		Partida oldObj = findById(id);
+		oldObj = newPartida(objDto);
+		
+		
+		return repository.save(oldObj);
+	}
+	
+	public Partida create(PartidaDTO objDto) {
+		
+		Partida newObj = newPartida(objDto);
+		
+		newObj.setCodigo(null);
+		
+		repository.save(newObj);
+		
+		return newObj;
+	}
+	
+	private Partida newPartida(PartidaDTO objDto) {
+		
+		List<Jogador> jogadores = new ArrayList<>();
+				
+		for (Integer id : objDto.getJogadores()) {
+		
+			jogadores.add(jogadorService.findById(id));
+			
+		}
+		
+		
+		List<Rodada> rodadas = new ArrayList<>();
+		
+		for (Integer rodadaId : objDto.getRodadas()) {
+			
+			rodadas.add(rodadaRepository.findById(rodadaId).orElseThrow(() -> new ObjectNotFoundException("Rodada não encotrada")));
+		}
+		
+		
+		Partida partida = new Partida();
+		
+		partida.setCodigo(objDto.getCodigo());
+		partida.setVencedor(objDto.getVencedor());
+		partida.addJogadores(jogadores);
+		partida.addRodadas(rodadas);
+			
+		
+		return partida;
+	}
+	
+}
