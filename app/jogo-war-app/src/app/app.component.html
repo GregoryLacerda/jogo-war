@@ -68,8 +68,15 @@
 
   .content {
     display: flex;
+    margin-top: 5%;
     padding: 0 16px;
     flex-direction: column;
+    align-items: center;
+  }
+  .button-row{
+    padding-top: 2em;
+    padding-left: 2em;
+    display: inline-block;
     align-items: center;
   }
 </style>
@@ -87,6 +94,14 @@
 </div>
 
 <div class="content" role="main">
+  <section>
+    <div class="button-row">
+      <button mat-raised-button color="primary">Iniciar Partida</button>
+    </div>
+    <div class="button-row">
+      <button mat-raised-button color="basic">Adicionar Novo Jogador</button>
+    </div>
+  </section>
 </div>
 
 <router-outlet></router-outlet>
