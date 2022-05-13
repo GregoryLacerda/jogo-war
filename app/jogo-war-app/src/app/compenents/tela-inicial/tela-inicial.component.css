@@ -1,0 +1,6 @@
+.button-row{
+    padding-top: 2em;
+    padding-left: 2em;
+    display: inline-block;
+    align-items: center;
+}

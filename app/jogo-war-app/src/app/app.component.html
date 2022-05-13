@@ -51,34 +51,15 @@
     margin: 0 16px;
   }
 
-  .toolbar #twitter-logo {
-    height: 40px;
-    margin: 0 8px;
-  }
-
-  .toolbar #youtube-logo {
-    height: 40px;
-    margin: 0 16px;
-  }
-
-  .toolbar #twitter-logo:hover,
-  .toolbar #youtube-logo:hover {
-    opacity: 0.8;
-  }
-
   .content {
     display: flex;
     margin-top: 5%;
     padding: 0 16px;
     flex-direction: column;
     align-items: center;
+    max-height: 200px;
   }
-  .button-row{
-    padding-top: 2em;
-    padding-left: 2em;
-    display: inline-block;
-    align-items: center;
-  }
+  
 </style>
 
 <!-- Toolbar -->
@@ -92,16 +73,7 @@
     <div class="spacer"></div>
     
 </div>
-
 <div class="content" role="main">
-  <section>
-    <div class="button-row">
-      <button mat-raised-button color="primary">Iniciar Partida</button>
-    </div>
-    <div class="button-row">
-      <button mat-raised-button color="basic">Adicionar Novo Jogador</button>
-    </div>
-  </section>
+  <router-outlet></router-outlet>
 </div>
 
-<router-outlet></router-outlet>
