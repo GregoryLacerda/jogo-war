@@ -1,0 +1,31 @@
+.content{
+    margin: 2em auto auto 2em ;
+}
+
+.jogador-list{
+    position: fixed;
+    right: 2em;
+    top: 4em;
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+  table {
+    overflow-x: auto;
+    overflow-y: hidden;
+    min-width: 500px;
+  }
+  th.mat-header-cell {
+    text-align: left;
+    max-width: 300px;
+    font-weight: 500;
+    color: black;
+  }

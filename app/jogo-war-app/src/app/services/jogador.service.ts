@@ -18,4 +18,8 @@ export class JogadorService {
       console.log('get' + jogadoresApi);
       return this.http.get<Jogador[]>(jogadoresApi);
     } 
+
+    public create(nome: any): Observable<any>{
+      return this.http.post(jogadoresApi, nome);
+    }
 }
