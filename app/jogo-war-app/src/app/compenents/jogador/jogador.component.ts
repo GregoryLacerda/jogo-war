@@ -33,17 +33,14 @@ export class JogadorComponent implements OnInit {
     const jogador ={
       nome:this.jogadorNome
     };
-    console.log(jogador)
     this.service.create(jogador)
     .subscribe(
     data => {
-      console.log(data);
       this.findAll();
       this.jogadorNome = " ";
       this.openSnackBar("Jogador cadastrado com sucesso", 'snack-success'); 
     },
     err => {
-      console.log(err);
       this.openSnackBar(err.error.message, 'snack-danger'); 
       this.jogadorNome = '';
     });  
