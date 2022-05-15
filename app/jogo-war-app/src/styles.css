@@ -2,3 +2,16 @@
 
 /*html, body { }*/
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.snack-danger{
+    color: white;
+    background:#ff0000;  
+    opacity: 0.5;
+  }
+
+  .snack-success{
+    color: white;
+    background:#0bc065;  
+    opacity: 0.5;
+  }
+  

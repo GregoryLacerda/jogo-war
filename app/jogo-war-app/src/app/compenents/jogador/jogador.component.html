@@ -1,11 +1,12 @@
 <div class="content">
     
     <h1>Adicionar Novo Jogador</h1>
+    <!-- TODO: Pagination nesta lista-->
     <div class="jogador-list">
         <h1>Lista de Jogadores</h1>
         <mat-form-field appearance="standard">
             <mat-label>Buscar Jogador</mat-label>
-            <input matInput (keyup)="buscar($event)" placeholder="Ex. Jogador 1" #input>
+            <input matInput (keyup)="buscar($event)" placeholder="Ex. Jogador 1" #input >
           </mat-form-field>
         <table mat-table [dataSource]="dataSource">
             <ng-container matColumnDef="id">
@@ -22,15 +23,26 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
     </div>
-
-    <form class="example-form">
+      
+   <form #formNome="ngForm" class="example-form" >
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Nome do Jogador</mat-label>
-          <input matInput name="" placeholder="Ex. Gabriel" [(ngModel)]="jogadorNome" [ngModelOptions]="{standalone: true}">
-          
+          <input matInput name="nome" id="nome"
+           [(ngModel)]="jogadorNome" #nome="ngModel" required [value]="jogadorNome">          
         </mat-form-field>
+        <div *ngIf="nome.invalid && (nome.dirty || nome.touched)">
+            <div *ngIf="nome.errors?.['required']">
+                
+            </div>
+            <div *ngIf="nome.errors?.['minlength']">
+                Name must be at least 4 characters long.
+            </div>
+            <div *ngIf="nome.errors?.['forbiddenName']">
+            Name cannot be Bob.
+            </div>
+        </div>
         <p>
-            <button mat-raised-button color="primary" (click)="create()">Salvar</button>
+            <button mat-raised-button color="primary" [disabled]="!formNome.form.valid" (click)="create()">Salvar</button>
         </p>
     </form>
 
