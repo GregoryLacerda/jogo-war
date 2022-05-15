@@ -8,3 +8,28 @@
     </div>
 </section>
 </div>
+
+
+<div class="jogador-list">
+  <h1>Partidas</h1>
+  <mat-form-field appearance="standard">
+      <mat-label>Buscar Jogador</mat-label>
+      <input matInput (keyup)="buscar($event)" placeholder="Ex. Jogador 1" #input >
+    </mat-form-field>
+  <div class="table-list">
+      <table mat-table [dataSource]="dataSource">
+          <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <td mat-cell *matCellDef="let jogador"> {{jogador.id}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="nome">
+          <th mat-header-cell *matHeaderCellDef> Nome </th>
+          <td mat-cell *matCellDef="let jogador"> {{jogador.nome}} </td>
+          </ng-container>
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+  </div>
+</div>

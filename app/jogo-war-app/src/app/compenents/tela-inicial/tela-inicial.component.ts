@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TelaInicialComponent implements OnInit {
 
+  dataSource: any;
+  displayedColumns= ['Codigo', 'Jogadores', 'No. Rodadas'];
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  buscar(event: Event ){
+
+  }
+
 
 }
