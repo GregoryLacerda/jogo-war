@@ -1,34 +1,35 @@
-<div class="content">
-    
+<div class="content">    
     <h1>Adicionar Novo Jogador</h1>
     <!-- TODO: Pagination nesta lista-->
     <div class="jogador-list">
-        <h1>Lista de Jogadores</h1>
+        <h1>Jogadores</h1>
         <mat-form-field appearance="standard">
             <mat-label>Buscar Jogador</mat-label>
             <input matInput (keyup)="buscar($event)" placeholder="Ex. Jogador 1" #input >
           </mat-form-field>
-        <table mat-table [dataSource]="dataSource">
-            <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef> No. </th>
-            <td mat-cell *matCellDef="let jogador"> {{jogador.id}} </td>
-            </ng-container>
-        
-            <ng-container matColumnDef="nome">
-            <th mat-header-cell *matHeaderCellDef> Nome </th>
-            <td mat-cell *matCellDef="let jogador"> {{jogador.nome}} </td>
-            </ng-container>
-        
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
+        <div class="table-list">
+            <table mat-table [dataSource]="dataSource">
+                <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> No. </th>
+                <td mat-cell *matCellDef="let jogador"> {{jogador.id}} </td>
+                </ng-container>
+            
+                <ng-container matColumnDef="nome">
+                <th mat-header-cell *matHeaderCellDef> Nome </th>
+                <td mat-cell *matCellDef="let jogador"> {{jogador.nome}} </td>
+                </ng-container>
+            
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
     </div>
       
    <form #formNome="ngForm" class="example-form" >
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Nome do Jogador</mat-label>
           <input matInput name="nome" id="nome"
-           [(ngModel)]="jogadorNome" #nome="ngModel" required [value]="jogadorNome">          
+           [(ngModel)]="jogadorNome" #nome="ngModel" required [value]="jogadorNome" autofocus>          
         </mat-form-field>
         <div *ngIf="nome.invalid && (nome.dirty || nome.touched)">
             <div *ngIf="nome.errors?.['required']">
@@ -43,6 +44,7 @@
         </div>
         <p>
             <button mat-raised-button color="primary" [disabled]="!formNome.form.valid" (click)="create()">Salvar</button>
+            <button mat-raised-button color="primary" routerLink="/">Voltar</button>
         </p>
     </form>
 

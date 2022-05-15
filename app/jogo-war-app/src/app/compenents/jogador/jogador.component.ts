@@ -1,10 +1,9 @@
 import { Jogador } from './../../models/jogador';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 
 import { JogadorService } from 'src/app/services';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import { EMPTY, empty } from 'rxjs';
 
 @Component({
   selector: 'app-jogador',
@@ -18,8 +17,6 @@ export class JogadorComponent implements OnInit {
   dataSource = new MatTableDataSource<Jogador>();
   erro: any | undefined;
   
-
-
   constructor(
     private service: JogadorService,
     private _snackBar: MatSnackBar,
@@ -33,6 +30,7 @@ export class JogadorComponent implements OnInit {
     const jogador ={
       nome:this.jogadorNome
     };
+
     this.service.create(jogador)
     .subscribe(
     data => {
@@ -49,7 +47,6 @@ export class JogadorComponent implements OnInit {
   findAll(){
     this.service.findAll()
       .subscribe(data => {
-        console.log(data)
         this.dataSource.data = data;
       });
   }

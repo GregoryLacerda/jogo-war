@@ -15,7 +15,6 @@ export class JogadorService {
     ) { }
 
     public findAll(): Observable<Jogador[]>{
-      console.log('get' + jogadoresApi);
       return this.http.get<Jogador[]>(jogadoresApi);
     } 
 
