@@ -11,7 +11,6 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   styleUrls: ['./jogador.component.css']
 })
 export class JogadorComponent implements OnInit {
-  jogadores: any;
   jogadorNome: any;
   displayedColumns = ['id', 'nome'];
   dataSource = new MatTableDataSource<Jogador>();
@@ -26,7 +25,7 @@ export class JogadorComponent implements OnInit {
      this.findAll(); 
   }
 
-  create(): void{
+  public create(): void{
     const jogador ={
       nome:this.jogadorNome
     };
@@ -44,14 +43,14 @@ export class JogadorComponent implements OnInit {
     });  
   }
 
-  findAll(){
+  public findAll(){
     this.service.findAll()
       .subscribe(data => {
         this.dataSource.data = data;
       });
   }
 
-  openSnackBar(erro: string, bgColor: string) {
+  public openSnackBar(erro: string, bgColor: string) {
     this._snackBar.open(erro, '', {
       horizontalPosition: 'right',
       verticalPosition: 'top',
@@ -60,7 +59,7 @@ export class JogadorComponent implements OnInit {
     });
   }
 
-  buscar(event: Event) {
+  public buscar(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }

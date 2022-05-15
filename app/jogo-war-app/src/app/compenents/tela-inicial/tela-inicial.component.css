@@ -1,7 +1,6 @@
 .button-row{
     padding-left: 2em;
     display: inline-block;
-    
 }
 
 .startMenu{
@@ -10,3 +9,44 @@
     flex-direction: column;
     align-items: center;
 }
+
+.content{
+    margin: 2em auto auto 2em ;
+}
+
+.partida-list{
+    position: fixed;
+    left: 2em;
+    top: 10em;
+    max-height: 500px;
+}
+.partida-list h1{
+    font-weight: 500;
+}
+.table-list{
+    overflow-y: scroll;
+    max-height: 400px;
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+table {
+    overflow-x: auto;
+    overflow-y: hidden;
+    min-width: 500px;
+}
+th.mat-header-cell {
+    text-align: left;
+    max-width: 300px;
+    font-weight: 500;
+    color: black;
+}
+

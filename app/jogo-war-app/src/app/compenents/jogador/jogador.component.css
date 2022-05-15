@@ -8,6 +8,9 @@
     top: 4em;
     max-height: 500px;
 }
+h1{
+  font-weight: 500;
+}
 .table-list{
   overflow-y: scroll;
   max-height: 400px;
@@ -17,22 +20,25 @@
     min-width: 150px;
     max-width: 500px;
     width: 100%;
-  }
-  
-  .example-full-width {
-    width: 100%;
-  }
+}
 
-  table {
-    overflow-x: auto;
-    overflow-y: hidden;
-    min-width: 500px;
-  }
-  th.mat-header-cell {
-    text-align: left;
-    max-width: 300px;
-    font-weight: 500;
-    color: black;
-  }
-  
+.example-full-width {
+  width: 100%;
+}
+
+table {
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-width: 500px;
+}
+th.mat-header-cell {
+  text-align: left;
+  max-width: 300px;
+  font-weight: 500;
+  color: black;
+}
+.buttons{
+  margin-left: 1em;
+}
+
 

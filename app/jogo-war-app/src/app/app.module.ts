@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
@@ -16,11 +16,11 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { JogadorComponent } from './compenents/jogador/jogador.component';
-import { PartidaComponent } from './compenents/partida/partida.component';
-import { TelaInicialComponent } from './compenents/tela-inicial/tela-inicial.component';
-import { JogadorService } from './services';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { JogadorComponent, 
+  PartidaComponent,
+   TelaInicialComponent 
+  } from './compenents/';
+import { JogadorService, TelaInicialService} from './services';
 
 @NgModule({
   declarations: [
@@ -44,7 +44,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatPaginatorModule,
     NgbModule
   ],
-  providers: [JogadorService],
+  providers: [JogadorService, TelaInicialService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

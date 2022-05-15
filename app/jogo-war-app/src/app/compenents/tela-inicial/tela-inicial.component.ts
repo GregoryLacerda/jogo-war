@@ -1,4 +1,7 @@
+import { Partida } from './../../models/partida';
+import { MatTableDataSource } from '@angular/material/table';
 import { Component, OnInit } from '@angular/core';
+import { TelaInicialService } from 'src/app/services';
 
 @Component({
   selector: 'app-tela-inicial',
@@ -7,17 +10,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TelaInicialComponent implements OnInit {
 
-  dataSource: any;
-  displayedColumns= ['Codigo', 'Jogadores', 'No. Rodadas'];
+  displayedColumns= ['codigo', 'jogadores', 'numRodadas', 'vencedor'];
+  dataSource = new MatTableDataSource<Partida>();
 
-  constructor() { }
+  constructor(
+    private service: TelaInicialService,
+    ) { }
 
   ngOnInit(): void {
   }
 
-  buscar(event: Event ){
-
+  public buscar(event: Event ){
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  public findAll(){
+    this.service.findAll()
+      .subscribe(data => {
+        console.log(data)
+        this.dataSource.data = data;
+      },
+      err => {
+        console.log(err)
+      }
+      );
+  }
 
 }
