@@ -14,8 +14,11 @@ export class TelaInicialService {
       private http: HttpClient,
   ) { }
 
+  partida: any;
   public findAll(): Observable<Partida[]>{
-    return this.http.get<Partida[]>(partidaEndpoint);
+   this.partida = this.http.get<Partida[]>(partidaEndpoint);
+   console.log(this.partida);
+   return this.partida;
   }
 
 }

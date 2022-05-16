@@ -1,4 +1,4 @@
-import { Partida } from './../../models/partida';
+import { Partida} from './../../models/partida';
 import { MatTableDataSource } from '@angular/material/table';
 import { Component, OnInit } from '@angular/core';
 import { TelaInicialService } from 'src/app/services';
@@ -9,8 +9,8 @@ import { TelaInicialService } from 'src/app/services';
   styleUrls: ['./tela-inicial.component.css']
 })
 export class TelaInicialComponent implements OnInit {
-
-  displayedColumns= ['codigo', 'jogadores', 'numRodadas', 'vencedor'];
+  partida: any;
+  displayedColumns= ['codigo', 'vencedor'];
   dataSource = new MatTableDataSource<Partida>();
 
   constructor(
@@ -18,6 +18,7 @@ export class TelaInicialComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    this.findAll();
   }
 
   public buscar(event: Event ){
@@ -28,8 +29,9 @@ export class TelaInicialComponent implements OnInit {
   public findAll(){
     this.service.findAll()
       .subscribe(data => {
-        console.log(data)
+        console.log(data);
         this.dataSource.data = data;
+        
       },
       err => {
         console.log(err)

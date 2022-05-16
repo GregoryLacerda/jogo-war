@@ -1,45 +1,36 @@
 <div class="startMenu">
   <section>
     <div class="button-row">
-      <button mat-raised-button color="primary" routerLink="partida">Iniciar Partida</button>
+      <button mat-raised-button color="primary" routerLink="partida">Partida</button>
     </div>
     <div class="button-row">
       <button mat-raised-button color="primary" routerLink="novoJogador">Adicionar Novo Jogador</button>
     </div>
-</section>
+  </section>
 </div>
 
+<div class="content"> 
+  <div class="partida-list">
+    <h1>Partidas</h1>
+    <mat-form-field appearance="standard">
+        <mat-label>Buscar Partidas</mat-label>
+        <input matInput (keyup)="buscar($event)" placeholder="Ex. Partida 1" #input >
+      </mat-form-field>
+    <div class="table-list">
+        <table mat-table [dataSource]="dataSource">
 
-<div class="partida-list">
-  <h1>Partidas</h1>
-  <mat-form-field appearance="standard">
-      <mat-label>Buscar Partidas</mat-label>
-      <input matInput (keyup)="buscar($event)" placeholder="Ex. Partida 1" #input >
-    </mat-form-field>
-  <div class="table-list">
-      <table mat-table [dataSource]="dataSource">
-
-          <ng-container matColumnDef="codigo">
-          <th mat-header-cell *matHeaderCellDef> No. Partida</th>
-          <td mat-cell *matCellDef="let partida"> {{partida.codigo}} </td>
-          </ng-container>
-      
-          <ng-container matColumnDef="jogadores">
-          <th mat-header-cell *matHeaderCellDef> Nome dos Jogadores </th>
-          <td mat-cell *matCellDef="let partida"> {{partida.jogadores.nome}} </td>
-          </ng-container>
-
-          <ng-container matColumnDef="numRodadas">
-            <th mat-header-cell *matHeaderCellDef> No. Rodadas </th>
-            <td mat-cell *matCellDef="let partida"> {{partida.rodadas.id}} </td>
-          </ng-container>
-
-          <ng-container matColumnDef="vencedor">
-            <th mat-header-cell *matHeaderCellDef> Vencedor </th>
-            <td mat-cell *matCellDef="let partida"> {{partida.vencedor}} </td>
-          </ng-container>
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
+            <ng-container matColumnDef="codigo">
+            <th mat-header-cell *matHeaderCellDef> No. Partida</th>
+            <td mat-cell *matCellDef="let partida"> {{partida.codigo}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="vencedor">
+              <th mat-header-cell *matHeaderCellDef> Vencedor </th>
+              <td mat-cell *matCellDef="let partida"> {{partida.vencedor}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
   </div>
 </div>
