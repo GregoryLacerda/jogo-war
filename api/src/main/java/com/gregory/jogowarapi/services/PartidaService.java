@@ -1,9 +1,11 @@
 package com.gregory.jogowarapi.services;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +13,9 @@ import org.springframework.stereotype.Service;
 import com.gregory.jogowarapi.domain.Jogador;
 import com.gregory.jogowarapi.domain.Partida;
 import com.gregory.jogowarapi.domain.Rodada;
+import com.gregory.jogowarapi.domain.dtos.JogadorDTO;
 import com.gregory.jogowarapi.domain.dtos.PartidaDTO;
+import com.gregory.jogowarapi.domain.dtos.RodadaDTO;
 import com.gregory.jogowarapi.repositories.JogadorRepository;
 import com.gregory.jogowarapi.repositories.PartidaRepository;
 import com.gregory.jogowarapi.repositories.RodadaRepository;
@@ -26,6 +30,8 @@ public class PartidaService {
 	private RodadaRepository rodadaRepository;
 	@Autowired
 	private JogadorRepository jogadorRepository;
+	@Autowired
+	private JogadorService jogadorService;
 	
 	public List<Partida> findAll() {
 		
@@ -57,6 +63,45 @@ public class PartidaService {
 		Partida newObj = newPartida(objDto);
 		
 		return newObj;
+	}
+	
+
+	public void addJogadores(Integer idPartida, List<Integer> jogadores) {
+		
+		Partida partida = findById(idPartida);
+		
+		List<Jogador> jogador = jogadores.stream().map(obj -> {
+			return new Jogador(new JogadorDTO(jogadorService.findById(obj)));			
+		}).collect(Collectors.toList());
+		
+		
+		jogador.stream().map(obj -> {
+			obj.addPartidas(Set.copyOf(Arrays.asList(partida)));
+			return obj;
+			}).collect(Collectors.toList());
+		
+		jogadorRepository.saveAll(jogador);
+		
+		partida.addJogadores(jogador);
+		
+		repository.save(partida);
+		
+	}
+	
+	public Rodada addRodada(RodadaDTO objDTO) {
+		
+		Partida partida = findById(objDTO.getPartida());
+		
+		Rodada rodada = new Rodada();
+		
+		rodada.setId(objDTO.getId());
+		rodada.setPartida(partida);
+		rodada.addMovimentoJogador(objDTO.getMovimentoJogador());
+		
+		rodadaRepository.save(rodada);
+		
+		return rodada;
+		
 	}
 	
 	private Partida newPartida(PartidaDTO objDto) {

@@ -3,7 +3,6 @@ package com.gregory.jogowarapi.resources;
 import java.net.URI;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,14 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.gregory.jogowarapi.domain.Jogador;
 import com.gregory.jogowarapi.domain.Partida;
-import com.gregory.jogowarapi.domain.Rodada;
 import com.gregory.jogowarapi.domain.dtos.PartidaDTO;
 import com.gregory.jogowarapi.domain.dtos.RodadaDTO;
-import com.gregory.jogowarapi.repositories.PartidaRepository;
-import com.gregory.jogowarapi.repositories.RodadaRepository;
-import com.gregory.jogowarapi.services.JogadorService;
 import com.gregory.jogowarapi.services.PartidaService;
 
 
@@ -33,12 +27,6 @@ public class PartidaResource {
 	
 	@Autowired
 	private PartidaService service;
-	@Autowired
-	private PartidaRepository partidaRepository;
-	@Autowired
-	private RodadaRepository rodadaRepository;
-	@Autowired
-	private JogadorService jogadorService;
 	
 	@GetMapping
 	public ResponseEntity<List<Partida>> findAll(){
@@ -77,44 +65,22 @@ public class PartidaResource {
 		
 		Partida partida = service.findById(objDTO.getPartida());
 		
-		partida.addRodadas(Arrays.asList(criaRodada(objDTO)));
+		partida.addRodadas(Arrays.asList(service.addRodada(objDTO)));
 		
-		return ResponseEntity.noContent().build();
-		
+		return ResponseEntity.noContent().build();		
 	}
 	
-	@PostMapping(value = "/{id}/addJogador")
+	@PostMapping(value = "/{id}/addJogadores")
 	public ResponseEntity<Void> adicionarJogador(@PathVariable Integer id, 
 			@RequestBody List<Integer> jogadores){
 		
-		Partida partida = service.findById(id);
+		service.addJogadores(id, jogadores);
 		
-		List<Jogador> jogadorList = jogadores.stream().map(obj -> jogadorService.findById(obj))
-				.collect(Collectors.toList());
-		
-		partida.addJogadores(jogadorList);		
-		
-		partidaRepository.save(partida);
-		
-		return ResponseEntity.noContent().build();
-		
+		return ResponseEntity.noContent().build();		
 	}
 
 	
-	private Rodada criaRodada(RodadaDTO objDTO) {
-		
-		Partida partida = service.findById(objDTO.getPartida());
-		
-		Rodada rodada = new Rodada();
-		
-		rodada.setId(objDTO.getId());
-		rodada.setPartida(partida);
-		rodada.addMovimentoJogador(objDTO.getMovimentoJogador());
-		
-		rodadaRepository.save(rodada);
-		
-		return rodada;
-	}
+	
 }
 
 
