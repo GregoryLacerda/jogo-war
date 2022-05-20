@@ -33,6 +33,7 @@ public class PartidaService {
 	@Autowired
 	private JogadorService jogadorService;
 	
+	
 	public List<Partida> findAll() {
 		
 		List<Partida> list = repository.findAll();
@@ -102,6 +103,16 @@ public class PartidaService {
 		
 		return rodada;
 		
+	}
+	
+	public void setVencedor(Integer idPartida, Integer idJogadorVencedor) {
+		
+		Partida partida = findById(idPartida);
+		Jogador jogador = jogadorService.findById(idJogadorVencedor);
+		
+		partida.setVencedor(jogador.getNome());
+		
+		repository.save(partida);
 	}
 	
 	private Partida newPartida(PartidaDTO objDto) {

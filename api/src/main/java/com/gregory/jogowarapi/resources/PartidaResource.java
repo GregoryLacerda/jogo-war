@@ -78,6 +78,14 @@ public class PartidaResource {
 		
 		return ResponseEntity.noContent().build();		
 	}
+	
+	@PostMapping(value = "/{id}/setVencedor")
+	public ResponseEntity<Void> setVencedor(@PathVariable Integer id, @RequestBody Integer idJogador){
+		
+		service.setVencedor(id, idJogador);
+		
+		return ResponseEntity.noContent().build();
+	}
 
 	
 	
