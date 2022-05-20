@@ -13,7 +13,7 @@
   <div class="partida-list">
     <h1>Partidas</h1>
     <mat-form-field appearance="standard">
-        <mat-label>Buscar Partidas</mat-label>
+        <mat-label>Buscar Partida</mat-label>
         <input matInput (keyup)="buscar($event)" placeholder="Ex. Partida 1" #input >
       </mat-form-field>
     <div class="table-list">
@@ -24,9 +24,39 @@
             <td mat-cell *matCellDef="let partida"> {{partida.codigo}} </td>
             </ng-container>
         
+            <ng-container matColumnDef="jogadores" >
+              <th mat-header-cell *matHeaderCellDef> Nome dos Jogadores </th>
+              <td mat-cell *matCellDef="let partida"> 
+                <div>
+                  <ng-container  *ngFor="let jogadores of partida?.jogadores">
+                    <div >
+                        <span>{{jogadores.nome}}</span>
+                    </div>
+                  </ng-container>
+                </div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="numRodadas">
+              <th mat-header-cell *matHeaderCellDef> No. Rodadas </th>
+              <td mat-cell *matCellDef="let partida; let l = count "> 
+                <div>
+                  <ng-container>
+                    <div>
+                        <span>{{l}}</span>
+                    </div>
+                  </ng-container>
+                </div>
+              </td>
+            </ng-container>
+
             <ng-container matColumnDef="vencedor">
               <th mat-header-cell *matHeaderCellDef> Vencedor </th>
-              <td mat-cell *matCellDef="let partida"> {{partida.vencedor}} </td>
+              <td mat-cell *matCellDef="let partida">
+                <div *ngIf="partida.vencedor !== null">
+                   {{partida.vencedor}} 
+                </div>
+              </td>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

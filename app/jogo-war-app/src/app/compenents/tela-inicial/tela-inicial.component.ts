@@ -10,7 +10,7 @@ import { TelaInicialService } from 'src/app/services';
 })
 export class TelaInicialComponent implements OnInit {
   partida: any;
-  displayedColumns= ['codigo', 'vencedor'];
+  displayedColumns= ['codigo', 'jogadores', 'numRodadas', 'vencedor'];
   dataSource = new MatTableDataSource<Partida>();
 
   constructor(
