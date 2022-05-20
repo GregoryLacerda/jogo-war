@@ -1,1 +1,29 @@
-<p>partida works!</p>
+<div name="content" class="content">
+    <section name="selecionarJogadores">
+        <div >
+            <h1>Selecionar jogadores</h1>
+            <mat-form-field appearance="fill">
+                <mat-label>Jogadores</mat-label>
+                <mat-select [formControl]="jogadores" multiple>
+                    <mat-select-trigger>
+                        {{jogadores.value ? jogadores.value[0] : ''}}
+                        
+                        <span *ngIf="jogadores.value?.length > 1" class="example-additional-selection">
+                        (+{{jogadores.value.length - 1}} {{jogadores.value?.length === 2 ? 'other' : 'others'}})
+                        </span>
+                    </mat-select-trigger>
+                    <mat-option *ngFor="let listaJogador of listaJogadores" [value]="listaJogador.nome">
+                        {{listaJogador.nome}}
+                    </mat-option>
+                    
+                </mat-select>
+            </mat-form-field>
+            <div class="iniciarButton">
+                <button mat-raised-button color="primary" 
+                    (click)="iniciarPartida();">
+                    Iniciar Partida
+                </button>
+            </div>
+        </div>
+    </section>
+</div>

@@ -30,8 +30,7 @@ export class TelaInicialComponent implements OnInit {
     this.service.findAll()
       .subscribe(data => {
         console.log(data);
-        this.dataSource.data = data;
-        
+        this.dataSource.data = data;        
       },
       err => {
         console.log(err)
