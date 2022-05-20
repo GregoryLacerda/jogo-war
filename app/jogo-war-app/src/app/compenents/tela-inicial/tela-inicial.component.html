@@ -39,11 +39,11 @@
 
             <ng-container matColumnDef="numRodadas">
               <th mat-header-cell *matHeaderCellDef> No. Rodadas </th>
-              <td mat-cell *matCellDef="let partida; let l = count "> 
+              <td mat-cell *matCellDef="let partida"> 
                 <div>
-                  <ng-container>
+                  <ng-container >
                     <div>
-                        <span>{{l}}</span>
+                        <span>{{partida.rodadas.length}}</span>
                     </div>
                   </ng-container>
                 </div>
