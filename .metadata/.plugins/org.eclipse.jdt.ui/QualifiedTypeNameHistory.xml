@@ -30,14 +30,10 @@
     <fullyQualifiedTypeName name="com.gregory.jogowarapi.resources.exceptions.StandardError"/>
     <fullyQualifiedTypeName name="org.springframework.http.HttpStatus"/>
     <fullyQualifiedTypeName name="java.lang.RuntimeException"/>
-    <fullyQualifiedTypeName name="com.gregory.jogowarapi.domain.Partida"/>
     <fullyQualifiedTypeName name="com.gregory.jogowarapi.repositories.JogadorRepository"/>
     <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonIgnore"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
     <fullyQualifiedTypeName name="com.gregory.jogowarapi.domain.dtos.RodadaDTO"/>
     <fullyQualifiedTypeName name="com.gregory.jogowarapi.domain.Rodada"/>
-    <fullyQualifiedTypeName name="org.springframework.http.ResponseEntity"/>
     <fullyQualifiedTypeName name="com.gregory.jogowarapi.repositories.RodadaRepository"/>
     <fullyQualifiedTypeName name="com.gregory.jogowarapi.services.exceptions.ObjectNotFoundException"/>
     <fullyQualifiedTypeName name="org.hibernate.mapping.Collection"/>
@@ -47,9 +43,6 @@
     <fullyQualifiedTypeName name="org.springframework.context.annotation.Configuration"/>
     <fullyQualifiedTypeName name="org.springframework.web.servlet.config.annotation.EnableWebMvc"/>
     <fullyQualifiedTypeName name="org.springframework.web.servlet.config.annotation.WebMvcConfigurer"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
-    <fullyQualifiedTypeName name="com.gregory.jogowarapi.services.JogadorService"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="com.gregory.jogowarapi.repositories.PartidaRepository"/>
     <fullyQualifiedTypeName name="com.gregory.jogowarapi.resources.PartidaResource"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
@@ -60,4 +53,11 @@
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="com.gregory.jogowarapi.domain.dtos.JogadorDTO"/>
     <fullyQualifiedTypeName name="com.gregory.jogowarapi.domain.Jogador"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="com.gregory.jogowarapi.services.JogadorService"/>
+    <fullyQualifiedTypeName name="com.gregory.jogowarapi.domain.Partida"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
+    <fullyQualifiedTypeName name="org.springframework.http.ResponseEntity"/>
 </qualifiedTypeNameHistroy>

@@ -1,5 +1,0 @@
-package com.gregory.jogowarapi.domain.dtos;
-
-public class JogadorDTO {
-
-}

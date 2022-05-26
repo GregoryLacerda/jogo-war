@@ -2,7 +2,7 @@ import { Partida } from './../../models/partida';
 import { Jogador } from './../../models/jogador';
 import { Component, OnInit } from '@angular/core';
 
-import { JogadorService } from 'src/app/services';
+import { JogadorService, PartidaService} from 'src/app/services';
 import {FormControl} from '@angular/forms';
 @Component({
   selector: 'app-partida',
@@ -13,6 +13,8 @@ export class PartidaComponent implements OnInit {
 
   jogadores = new FormControl();
   listaJogadores: Jogador[] = [];
+  rodadas: string[] = [];
+
 
   partida: Partida = {
     codigo: 0,
@@ -23,7 +25,7 @@ export class PartidaComponent implements OnInit {
 
   constructor(
     private jogadorService: JogadorService,
-
+    private partidaService: PartidaService,
   ) { }
 
   ngOnInit(): void {
@@ -42,14 +44,11 @@ export class PartidaComponent implements OnInit {
     );
   }
 
-  public adicionarJogadores(): any{
+  public criarPartida(){
     this.partida.jogadores = this.jogadores.value;
-    console.log(this.partida.jogadores)
-  } 
-
-  public iniciarPartida(){
-   this.adicionarJogadores();
-    console.log("Partida Iniciada")
+    this.partida.rodadas = this.rodadas;
+    this.partidaService.criarPartida(this.partida);
   }
+
 
 }
